@@ -57,9 +57,11 @@ main(int argc, char **argv)
 
 	choices = io_read_choices(display_descriptions);
 
-	io_print_choice(
-	    ui_selected_choice(choices, query, use_alternate_screen),
-	    output_description);
+	if (!SLIST_EMPTY(choices)) {
+		io_print_choice(
+			ui_selected_choice(choices, query, use_alternate_screen),
+			output_description);
+	}
 
 	choices_free(choices);
 
